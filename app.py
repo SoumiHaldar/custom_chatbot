@@ -32,7 +32,7 @@ for item in data:
 splitter=RecursiveCharacterTextSplitter(chunk_size=1000,chunk_overlap=200)
 chunks=splitter.split_documents(data)
 
-# Get word embeddings and use FAISS for similarity search for word embeddings
+# Get word embeddings and use FAISS for similarity search for word embeddings 
 if os.path.exists('courseData.pkl'):
     with open('courseData.pkl','rb') as f:
         vectorstore=pickle.load(f)
@@ -43,8 +43,8 @@ else:
         pickle.dump(vectorstore,f)
 
 # Initialize LLM
-llm=OpenAI(temperature=0, max_tokens=500)
-chain = RetrievalQAWithSourcesChain.from_chain_type(llm=llm, chain_type="stuff", retriever=vectorstore.as_retriever())
+# llm=OpenAI(temperature=0, max_tokens=500)
+# chain = RetrievalQAWithSourcesChain.from_chain_type(llm=llm, chain_type="stuff", retriever=vectorstore.as_retriever())
 # langchain.debug=True
 
 # User input
